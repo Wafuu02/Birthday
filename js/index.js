@@ -293,10 +293,20 @@ window.requestAnimFrame = function () {
       w = 255;h = 155;
     }
   
-    var ifrm = document.createElement("iframe");
-    ifrm.setAttribute("src", "https://www.youtube.com/embed/gbICivOO26U?controls=0&loop=1&autoplay=1");
-    //ifrm.style.width = `${w}px`;
-    //ifrm.style.height = `${h}px`;
-    ifrm.style.border = 'none';
-    document.querySelector('#video').appendChild(ifrm);
+    var video = document.createElement("video");
+    video.setAttribute("controls", true); // Add controls for playback
+    video.style.width = w + "px"; // Set width
+    video.style.height = h + "px"; // Set height
+    video.style.border = 'none';
+
+    // Create a source element and set the path to your local video file
+    var source = document.createElement("source");
+    source.setAttribute("src", "C:/Users/LENOVO/Downloads/Birthday/video/vid.mp4"); // Replace "path/to/your/local/video.mp4" with the actual path to your video file
+    source.setAttribute("type", "video/mp4"); // Specify the MIME type of the video
+
+    // Append the source element to the video element
+    video.appendChild(source);
+
+    // Append the video element to the designated container in your HTML
+    document.querySelector('#video').appendChild(video);
   }
